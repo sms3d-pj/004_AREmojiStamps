@@ -100,11 +100,20 @@ namespace pmjo.Examples
         {
             if (errorCode == Recorder.ErrorCode.NoError)
             {
+                //Debug.Log("Recording exported to " + path + ", session id " + sessionId);
                 Debug.Log("Recording exported to " + path + ", session id " + sessionId);
+                NativeGallery.SaveVideoToGallery(
+                    //string existingMediaPath,
+                    path,
+                    //string album,
+                    "Gallery/pmjosNextGenRecorder",
+                    //string filename,
+                    "MyAwesomeRecording.mp4"
+                );
 
-    #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
+#if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
                 CopyFileToDesktop(path, "MyAwesomeRecording.mp4");
-    #elif UNITY_IOS ||  UNITY_TVOS
+#elif UNITY_IOS || UNITY_TVOS
                 PlayVideo(path);
     #endif
 
