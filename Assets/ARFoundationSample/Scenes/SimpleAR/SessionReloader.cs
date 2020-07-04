@@ -11,12 +11,18 @@ public class SessionReloader : MonoBehaviour
 {
     public ARSession session;
     public GameObject sessionPrefab;
+    public ARSessionOrigin sessionOrigin;
     public Button pauseButton;
     public Button resumeButton;
     public Button resetButton;
 
+    private GameObject placedPrefab;
+
     public void ReloadSession()
     {
+        PlaceOnPlane place = sessionOrigin.GetComponent<PlaceOnPlane>();
+        placedPrefab = place.spawnedObject;
+
         if (session != null)
         {
             StartCoroutine(DoReload());
@@ -34,9 +40,16 @@ public class SessionReloader : MonoBehaviour
 
             // Hook the buttons back up
             resetButton.onClick.AddListener(session.Reset);
+            resetButton.onClick.AddListener(DestroyPrefab);
             pauseButton.onClick.AddListener(() => { session.enabled = false; });
             resumeButton.onClick.AddListener(() => { session.enabled = true; });
         }
 
+    }
+
+    public void DestroyPrefab()
+    {
+        Destroy(placedPrefab);
+        Debug.Log("Destroyed");
     }
 }
