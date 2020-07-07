@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FaceDirection : MonoBehaviour
 {
-    [SerializeField] protected Transform objectTransform;
+    Transform objectTransform;
 
     private Vector3 lookAtPosition;
     private Quaternion rot;
@@ -12,6 +12,9 @@ public class FaceDirection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject CameraOject = GameObject.Find("AR Camera");
+        objectTransform = CameraOject.GetComponent<Transform>();
+
         rot = Quaternion.Euler(-90, 0, 0);
     }
 
