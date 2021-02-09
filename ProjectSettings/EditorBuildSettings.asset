@@ -96,7 +96,5 @@ EditorBuildSettings:
     path: Assets/SampleMovie/Scenes/AREmojiStamps.unity
     guid: 50c5c19054dc08b40853fee56eb72f7d
   m_configObjects:
-    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 22c01c6986ce83b40be086cd9e9d46a5,
-      type: 2}
     com.unity.xr.arkit.PlayerSettings: {fileID: 11400000, guid: 2d5fb8e61571b4e3897f221189089fd6,
       type: 2}
